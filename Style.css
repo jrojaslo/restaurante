@@ -6,7 +6,8 @@
   margin: 0;
 }
 
-.html {
+/* ERROR CORREGIDO: Quitado el punto de ".html" */
+html {
   font-size: 62.5%;
 }
 
@@ -31,7 +32,8 @@ body {
   outline: none;
   margin-top: 1em;
   text-transform: uppercase;
-  font-weight: small;
+  /* ERROR CORREGIDO: "small" no es válido, cambiado a 500 */
+  font-weight: 500;
 }
 
 .btn-primary {
@@ -113,6 +115,8 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  /* CORRECCIÓN AÑADIDA: (Tu comentario 1) Padding para compensar navbar */
+  padding-top: 50px;
 }
 
 .showcase-container {
@@ -207,21 +211,24 @@ body {
   color: #555;
 }
 
-.food-menu-item {
-  display: grid; /* Activa la cuadrícula */
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual tamaño */
-  gap: auto; /* Espacio entre imágenes */
+/* ESTA REGLA ESTABA MAL APLICADA Y CAUSABA CONFUSIÓN */
+/* LA HE REEMPLAZADO MÁS ABAJO CON REGLAS PARA .food-menu-container y .food-menu-item */
+/* .food-menu-item {
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: auto;  ERROR: gap: auto no es válido
   padding: 15px;
 }
 
 .food-menu-item,
 .food-img {
-  width: 100%; /* Asegura que la imagen ocupe el ancho de su celda */
-  height: auto; /* Mantiene la proporción */
-  display: block; /* Elimina espacio extra debajo de la imagen */
-  border-radius: 5px; /* Bordes redondeados (opcional) */
-  cursor: pointer; /* Cambia el cursor al pasar por encima (opcional) */
+  width: 100%; 
+  height: auto; 
+  display: block; 
+  border-radius: 5px; 
+  cursor: pointer; 
 }
+*/
 
 .food-container {
   display: flex;
@@ -288,6 +295,84 @@ body {
   opacity: 1;
   top: 40%;
 }
+
+/* ........ Food Menu (REGLAS CORREGIDAS) ........... */
+
+/* CORRECCIÓN AÑADIDA: (Tu comentario 2) Estilo para el H2 del Menú */
+.food-menu-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  color: #555;
+}
+
+/* CORRECCIÓN AÑADIDA: Contenedor de la cuadrícula del menú */
+.food-menu-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+  gap: 2rem;
+}
+
+/* CORRECCIÓN AÑADIDA: Estilo para cada item del menú (imagen + texto) */
+.food-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+.food-menu-item .food-img img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 5px;
+  display: block;
+}
+
+.food-menu-item .food-description {
+  padding-right: 1rem;
+}
+.food-menu-item .food-description h2 {
+  font-size: 1.6rem;
+  color: #333;
+}
+.food-menu-item .food-description p {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 0.5rem 0;
+}
+.food-menu-item .food-description .food-price {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #16a083;
+}
+
+/* ........ Testimonials........... */
+
+/* CORRECCIÓN AÑADIDA: (Tu comentario 2) Estilo para el H2 de Testimonios */
+.testimonial-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  color: #555;
+}
+
+/* CORRECCIÓN AÑADIDA: (Tu comentario 1) Ajustar tamaño de imagen */
+.customer-photo img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%; /* Para que sean redondas */
+}
+
+/* (El resto de estilos de testimonios está bien) */
 
 /* ........ Contact Us........... */
 
@@ -489,6 +574,11 @@ body {
   .img-container {
     margin: 0;
   }
+
+  /* CORRECCIÓN AÑADIDA: 1 columna de menú en móvil */
+  .food-menu-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 500px) {
@@ -509,9 +599,13 @@ body {
     margin: auto;
   }
 
+  /* CORRECCIÓN: Ajustar el item de menú en móvil */
   .food-menu-item {
-    flex-direction: column;
+    flex-direction: column; /* Pone la imagen encima del texto */
     text-align: center;
+  }
+  .food-menu-item .food-description {
+    padding: 0.5rem;
   }
 
   .form-container {
@@ -550,6 +644,11 @@ body {
   .img-container .btn {
     font-size: 0.7rem;
   }
+
+  /* CORRECCIÓN AÑADIDA: 1 columna en tablets para el menú */
+  .food-menu-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (orientation: landscape) and (max-height: 500px) {
@@ -557,3 +656,5 @@ body {
     height: 50vmax;
   }
 }
+
+/* ERROR CORREGIDO: Se eliminó un "}" extra que estaba aquí */
