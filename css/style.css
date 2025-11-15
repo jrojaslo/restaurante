@@ -10,16 +10,8 @@ html {
   font-size: 62.5%;
 }
 
-/* body {
-  font-family: "Poppins", sans-serif;
-  
-} */
 body {
   background-color: lightblue;
-  font-family: Arial, sans-serif;
-}
-h1 {
-  color: red;
 }
 
 /* ///////////..utility classes../////////// */
